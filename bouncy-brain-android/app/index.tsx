@@ -10,10 +10,10 @@ import Home from "../src/components/Home";
 import Auth from "../src/components/Auth";
 import Dashboard from "../src/components/Dashboard";
 import FocusTimer from "../src/components/FocusTimer";
-import TodoList from "../src/components/TodoList";
+import TodoList from "../src/components/Todo";
 import Mindfulness from "../src/components/Mindfulness";
 import DeadlineTimer from "../src/components/DeadlineTimer";
-import Calendar from "../src/components/Calendar";
+import Calendar from "../src/components/Calender";
 
 const Stack = createNativeStackNavigator();
 
