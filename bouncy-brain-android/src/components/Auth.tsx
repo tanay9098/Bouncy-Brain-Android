@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { api } from "../api";
 import { useUser } from "../contexts/UserContext";
-import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
+
 import { styles } from "../styles";
 
 export default function Auth() {
   const { setUser, setToken } = useUser();
-  const nav = useNavigation();
+  const nav = router;
+
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

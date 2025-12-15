@@ -1,11 +1,11 @@
 // src/components/Home.tsx
 import React from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import {router} from "expo-router";
 import { styles } from "../styles";
 
 export default function Home() {
-  const nav = useNavigation();
+  const nav = router;
   return (
     <ScrollView contentContainerStyle={{ padding: 16 }}>
       <View style={{ marginBottom: 12 }}>
