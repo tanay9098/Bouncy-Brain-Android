@@ -1,5 +1,4 @@
-// src/contexts/UserContext.js
-// src/contexts/UserContext.tsx
+
 import React, { createContext, useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { setToken as setApiToken } from "../api";
