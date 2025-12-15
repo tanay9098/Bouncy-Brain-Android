@@ -25,7 +25,7 @@ export default function Auth() {
       await setToken(res.token);
       // navigate home
       // @ts-ignore
-      nav.navigate("Home");
+      router.replace("/");
     } catch (err: any) {
       Alert.alert("Error", err?.message || "Error");
     }

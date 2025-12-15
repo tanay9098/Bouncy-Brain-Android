@@ -24,13 +24,13 @@ export default function Home() {
       <View style={styles.card}>
         <Text style={{ fontWeight: 700 }}>Quick Actions</Text>
         <View style={{ marginTop: 10 }}>
-          <TouchableOpacity style={[styles.btnSecondary, { padding: 10, marginBottom: 8 }]} onPress={() => nav.navigate("Todo" as never)}>
+          <TouchableOpacity style={[styles.btnSecondary, { padding: 10, marginBottom: 8 }]} onPress={() => router.push("/todo")}>
             <Text>Open Todo</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.btnSecondary, { padding: 10, marginBottom: 8 }]} onPress={() => nav.navigate("Mindful" as never)}>
+          <TouchableOpacity style={[styles.btnSecondary, { padding: 10, marginBottom: 8 }]} onPress={() => router.push("/mindfulness")}>
             <Text>Mindfulness</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.btnSecondary, { padding: 10 }]} onPress={() => nav.navigate("Deadline" as never)}>
+          <TouchableOpacity style={[styles.btnSecondary, { padding: 10 }]} onPress={() => router.push("/deadlinetimer")}>
             <Text>Deadlines</Text>
           </TouchableOpacity>
         </View>
