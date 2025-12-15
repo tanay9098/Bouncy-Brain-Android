@@ -1,17 +1,14 @@
 // app/_layout.tsx
-import React from "react";
-import { View, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Stack } from "expo-router";
+import { UserProvider } from "../src/contexts/UserContext";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout() {
   return (
-    <SafeAreaView style={styles.safe}>
-      <View style={styles.container}>{children}</View>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <UserProvider>
+        <Stack screenOptions={{ headerShown: false }} />
+      </UserProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: "#f1fbff" },
-  container: { flex: 1 },
-});
