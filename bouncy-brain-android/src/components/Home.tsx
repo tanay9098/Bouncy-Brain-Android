@@ -16,7 +16,7 @@ export default function Home() {
       <View style={styles.card}>
         <Text style={{ fontWeight: 700 }}>Get started</Text>
         <Text style={styles.small}>Use Focus Timer to start a Pomodoro or Deep Work session.</Text>
-        <TouchableOpacity style={[styles.btn, { marginTop: 12 }]} onPress={() => nav.navigate("Focus" as never)}>
+        <TouchableOpacity style={[styles.btn, { marginTop: 12 }]} onPress={() => nav.navigate("/focus")}>
           <Text style={styles.btnText}>Start Focus</Text>
         </TouchableOpacity>
       </View>
