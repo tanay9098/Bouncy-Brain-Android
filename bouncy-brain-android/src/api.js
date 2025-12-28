@@ -22,4 +22,3 @@ export const api = {
   post: (p, b) => req(p, { method: "POST", body: JSON.stringify(b) }),
   put: (p, b) => req(p, { method: "PUT", body: JSON.stringify(b) }),
 };
-
