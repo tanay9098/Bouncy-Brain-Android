@@ -17,6 +17,25 @@ router.get('/', auth, async (req,res)=>{
   res.json({ tasks });
 });
 
+// UPDATE task (edit title, dueAt, estimate)
+router.put('/:id', auth, async (req, res) => {
+  const { title, dueAt, estimateMins } = req.body;
+
+  const task = await Task.findOneAndUpdate(
+    { _id: req.params.id, userId: req.userId },
+    {
+      title,
+      dueAt: dueAt ? new Date(dueAt) : null,
+      estimateMins
+    },
+    { new: true }
+  );
+
+  if (!task) return res.status(404).json({ error: 'Task not found' });
+  res.json({ task });
+});
+
+
 router.post('/', auth, async (req,res)=>{
   const { title, dueAt, estimateMins } = req.body;
   const doc = await Task.create({ userId: req.userId, title, dueAt: dueAt ? new Date(dueAt) : null, estimateMins });
@@ -24,16 +43,14 @@ router.post('/', auth, async (req,res)=>{
 });
 
 router.put('/:id/complete', auth, async (req,res)=>{
-  await Task.findByIdAndUpdate(req.params.id, { completed: true });
+  await Task.findByIdAndUpdate(req.params.id, { 
+    completed: true ,
+    completedAt: new Date()
+
+
+  });
   res.json({ ok: true });
 });
-
-router.get('/:id', auth, async (req,res)=>{
-  const t = await Task.findById(req.params.id);
-  res.json({ task: t });
-});
-
-// auto-chunk placeholder: ideally call ML_CHUNK_URL
 router.post('/:id/auto-chunk', auth, async (req,res)=>{
   const task = await Task.findById(req.params.id);
   if(!task) return res.status(404).json({ error: 'not found' });
@@ -61,6 +78,14 @@ router.post('/:id/auto-chunk', auth, async (req,res)=>{
   task.subtasks = chunks.map(c => ({ title: c.title, completed: false }));
   await task.save();
   res.json({ task });
+
+router.get('/:id', auth, async (req,res)=>{
+  const t = await Task.findById(req.params.id);
+  res.json({ task: t });
+});
+
+// auto-chunk placeholder: ideally call ML_CHUNK_URL
+
 });
 
 module.exports = router;
